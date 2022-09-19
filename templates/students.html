@@ -12,32 +12,28 @@
   <h1>プロジェクトリサーチ 英単語アプリ 管理者用ページ</h1>
   <p></p>
 
-  <h2>登録されているユーザー一覧（Usersテーブル）</h2>
+  <h2>{{username}}の個人成績一覧（Studentsテーブル）</h2>
   <p>※ passwordは見えません</p>
 
   <table border="1">
     <thead>
       <tr>
         <th>id</th>
-        <th>email</th>
-        <th>username</th>
-        <th>role</th>
-        <th>signup_date</th>
-        <th>login_date</th>
-        <th>個人成績</th>
+        <th>word_id</th>
+        <th>response</th>
+        <th>correct</th>
+        <th>response_date</th>
       </tr>
     </thead>
 
     <tbody>
-      {% for useritem in userdata %}
+      {% for studentsitem in studentsdata %}
       <tr>
-        <td>{{useritem[0]}}</td>
-        <td>{{useritem[1]}}</td>
-        <td>{{useritem[2]}}</td>
-        <td>{{useritem[3]}}</td>
-        <td>{{useritem[4]}}</td>
-        <td>{{useritem[5]}}</td>
-        <td><a href="/students/{{useritem[0]}}" role="button">個人成績を確認</a></td>
+        <td>{{studentsitem[0]}}</td>
+        <td>{{studentsitem[1]}}</td>
+        <td>{{studentsitem[2]}}</td>
+        <td>{{studentsitem[3]}}</td>
+        <td>{{studentsitem[4]}}</td>
       </tr>
       {% endfor %}
     </tbody>
