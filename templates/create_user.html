@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PR DB管理画面</title>
+</head>
+
+<body>
+    <h1>プロジェクトリサーチ 英単語アプリ 管理者用ページ</h1>
+    <p></p>
+
+    <h2>新しくユーザーを作成する</h2>
+    <p>データベース（usersテーブル）に登録する内容を入力してください。</p>
+
+    <form action="/create_user" method="POST">
+        <div>
+            <label>メールアドレス</label>
+            <input type="email" name="email">
+        </div>
+
+        <div>
+            <label>ユーザー名</label>
+            <input type="text" name="username">
+        </div>
+
+        <div>
+            <label>パスワード</label>
+            <input type="password" name="password">
+        </div>
+
+        <div>
+            <label>ロール</label>
+            <input type="radio" name="role" value="Student">Student
+            <input type="radio" name="role" value="Tester">Tester
+            <input type="radio" name="role" value="Admin">Admin
+        </div>
+
+        <input type="submit" value="ユーザーを作成する">
+    </form>
+
+    <a href="/">キャンセル</a>
+</body>
+
+</html>
