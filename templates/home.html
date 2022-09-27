@@ -1,50 +1,63 @@
-<!DOCTYPE html>
-<html lang="ja">
+{% extends "base.html" %}
+{% block body %}
 
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>PR DB管理画面</title>
-</head>
+<h1>プロジェクトリサーチ 英単語アプリ 管理者用ページ</h1>
+<p></p>
 
-<body>
-  <h1>プロジェクトリサーチ 英単語アプリ 管理者用ページ</h1>
-  <p></p>
+<h2>登録されているユーザー一覧（Usersテーブル）</h2>
+<p>※ passwordは見えません</p>
 
-  <h2>登録されているユーザー一覧（Usersテーブル）</h2>
-  <p>※ passwordは見えません</p>
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      <th>id</th>
+      <th>email</th>
+      <th>username</th>
+      <th>role</th>
+      <th>signup_date</th>
+      <th>login_date</th>
+      <th>個人成績</th>
+      <th>削除</th>
+    </tr>
+  </thead>
 
-  <table border="1">
-    <thead>
-      <tr>
-        <th>id</th>
-        <th>email</th>
-        <th>username</th>
-        <th>role</th>
-        <th>signup_date</th>
-        <th>login_date</th>
-        <th>個人成績</th>
-      </tr>
-    </thead>
+  <tbody>
+    {% for useritem in userdata %}
+    <tr>
+      <td>{{useritem[0]}}</td>
+      <td>{{useritem[1]}}</td>
+      <td>{{useritem[2]}}</td>
+      <td>{{useritem[3]}}</td>
+      <td>{{useritem[4]}}</td>
+      <td>{{useritem[5]}}</td>
+      <td><a href="/students/{{useritem[0]}}">個人成績を確認</a></td>
+      <td>
+        <button type="button" class="btn btn-primary" data-bs-toggle="modal"
+          data-bs-target="#Modal_{{useritem[0]}}">このユーザーを削除</button>
 
-    <tbody>
-      {% for useritem in userdata %}
-      <tr>
-        <td>{{useritem[0]}}</td>
-        <td>{{useritem[1]}}</td>
-        <td>{{useritem[2]}}</td>
-        <td>{{useritem[3]}}</td>
-        <td>{{useritem[4]}}</td>
-        <td>{{useritem[5]}}</td>
-        <td><a href="/students/{{useritem[0]}}">個人成績を確認</a></td>
-      </tr>
-      {% endfor %}
-    </tbody>
-  </table>
+        <div class="modal fade" id="Modal_{{useritem[0]}}" tabindex="-1" aria-labelledby="Modal_{{useritem[0]}}Label"
+          aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h class="modal-title" id="Modal_{{useritem[0]}}Label">本当に削除しますか？</h>
+              </div>
+              <div class="modal-body">
+                ユーザー：{{useritem[2]}}
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">キャンセル</button>
+                <button type="button" class="btn btn-link"><a href="/delete_user/{{useritem[0]}}">削除</a></button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
 
-  <p></p>
-  <a href="/create_user">新しくユーザーを作成する</a>
-</body>
+<button type="button" class="btn btn-link"><a href="/create_user">新しくユーザーを作成する</a></button>
 
-</html>
+{% endblock %}

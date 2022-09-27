@@ -1,11 +1,8 @@
 # 各種インポート
-from http.client import OK
-from tabnanny import process_tokens
 from flask import Flask, render_template, request, redirect
 import sqlite3
 from flask_bcrypt import Bcrypt
 from datetime import datetime
-import pytz
 
 # 最初の呪文
 app = Flask(__name__)
@@ -92,6 +89,16 @@ def create_user():
         return redirect('/')
 
 
+@app.route('/delete_user/<int:key>')
+def delete_user(key):
+    db = sqlite3.connect(DATABASE)  # データベースと接続
+    sql_statement = 'DELETE FROM users WHERE id={}'.format(key)
+    db.execute(sql_statement)
+    db.commit()
+    db.close()
+    return redirect('/')
+
+
 # 最後の呪文
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(debug=True, port=5000)

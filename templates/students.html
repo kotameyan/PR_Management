@@ -1,43 +1,35 @@
-<!DOCTYPE html>
-<html lang="ja">
+{% extends "base.html" %}
+{% block body %}
 
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>PR DB管理画面</title>
-</head>
+<h1>プロジェクトリサーチ 英単語アプリ 管理者用ページ</h1>
+<p></p>
 
-<body>
-  <h1>プロジェクトリサーチ 英単語アプリ 管理者用ページ</h1>
-  <p></p>
+<h2>{{username}}の個人成績一覧（Studentsテーブル）</h2>
+<p>※ passwordは見えません</p>
+<p><a href="/">ユーザー一覧に戻る</a></p>
 
-  <h2>{{username}}の個人成績一覧（Studentsテーブル）</h2>
-  <p>※ passwordは見えません</p>
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      <th>id</th>
+      <th>word_id</th>
+      <th>response</th>
+      <th>correct</th>
+      <th>response_date</th>
+    </tr>
+  </thead>
 
-  <table border="1">
-    <thead>
-      <tr>
-        <th>id</th>
-        <th>word_id</th>
-        <th>response</th>
-        <th>correct</th>
-        <th>response_date</th>
-      </tr>
-    </thead>
+  <tbody>
+    {% for studentsitem in studentsdata %}
+    <tr>
+      <td>{{studentsitem[0]}}</td>
+      <td>{{studentsitem[1]}}</td>
+      <td>{{studentsitem[2]}}</td>
+      <td>{{studentsitem[3]}}</td>
+      <td>{{studentsitem[4]}}</td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
 
-    <tbody>
-      {% for studentsitem in studentsdata %}
-      <tr>
-        <td>{{studentsitem[0]}}</td>
-        <td>{{studentsitem[1]}}</td>
-        <td>{{studentsitem[2]}}</td>
-        <td>{{studentsitem[3]}}</td>
-        <td>{{studentsitem[4]}}</td>
-      </tr>
-      {% endfor %}
-    </tbody>
-  </table>
-</body>
-
-</html>
+{% endblock %}
