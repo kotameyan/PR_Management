@@ -92,10 +92,11 @@ def create_user():
 @app.route('/delete_user/<int:key>')
 def delete_user(key):
     db = sqlite3.connect(DATABASE)  # データベースと接続
-    sql_statement = 'DELETE FROM users WHERE id={}'.format(key)
-    db.execute(sql_statement)
-    db.commit()
-    db.close()
+    sql_statement = 'DELETE FROM users WHERE id={}'.format(key)  # 削除するユーザーを指定
+    db.execute(sql_statement)  # 削除を実行
+    db.commit()  # 実行結果を確定
+    db.close()  # データベースとの接続を閉じる
+
     return redirect('/')
 
 
