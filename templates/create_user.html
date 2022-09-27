@@ -8,34 +8,37 @@
 <h2>新しくユーザーを作成する</h2>
 <p>データベース（usersテーブル）に登録する内容を入力してください。</p>
 
-<form action="/create_user" method="POST">
-    <div class="mb-3">
-        <label class="form-label">メールアドレス</label>
-        <input type="email" class="form-control" name="email">
-    </div>
+<div class="container mt-5 p-lg-5 w-25 bg-light">
+    <form action="/create_user" method="POST">
+        <div class="mb-3">
+            <label class="form-label">メールアドレス</label>
+            <input type="email" class="form-control" name="email">
+        </div>
 
-    <div class="mb-3">
-        <label class="form-label">ユーザー名</label>
-        <input type="text" class="form-control" name="username">
-    </div>
+        <div class="mb-3">
+            <label class="form-label">ユーザー名</label>
+            <input type="text" class="form-control" name="username">
+        </div>
 
-    <div class="mb-3">
-        <label class="form-label">パスワード</label>
-        <input type="password" class="form-control" name="password">
-    </div>
+        <div class="mb-3">
+            <label class="form-label">パスワード</label>
+            <input type="password" class="form-control" name="password">
+        </div>
 
-    <div class="mb-3">
-        <label>ロール</label>
-        <div class="form-check"><input type="radio" name="role" class="form-check-input" value="Student">Student</div>
-        <div class="form-check"><input type="radio" name="role" class="form-check-input" value="Tester">Tester</div>
-        <div class="form-check"><input type="radio" name="role" class="form-check-input" value="Admin">Admin</div>
-    </div>
+        <div class="mb-3">
+            <label>ロール</label>
+            <div class="form-check"><input type="radio" name="role" class="form-check-input" value="Student">Student
+            </div>
+            <div class="form-check"><input type="radio" name="role" class="form-check-input" value="Tester">Tester</div>
+            <div class="form-check"><input type="radio" name="role" class="form-check-input" value="Admin">Admin</div>
+        </div>
 
-    <button type="submit" class="btn btn-primary">ユーザーを作成する</button>
-</form>
+        <button type="submit" class="btn btn-primary">ユーザーを作成する</button>
+    </form>
 
-<p></p>
+    <p></p>
 
-<button type="button" class="btn btn-link"><a href="/">キャンセル</a></button>
+    <button type="button" class="btn btn-link"><a href="/">キャンセル</a></button>
+</div>
 
 {% endblock %}
