@@ -1,4 +1,5 @@
-# English_learning_site_management
+# PR_management
+管理者側でユーザーを登録、削除、閲覧できるものです。
 
 ・使用している技術  
 flask（pythonのWEBフレームワーク）  
