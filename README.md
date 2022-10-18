@@ -5,4 +5,4 @@ flask（pythonのWEBフレームワーク）
 sqlite3（RDB）  
 
 ・リモートリポジトリの略称名  
-elsm
+PR_Management
